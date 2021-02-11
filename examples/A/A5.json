@@ -1,0 +1,11 @@
+[
+    {
+        "code": "BOOHl_EQ",
+        "maxBuy": 26.77,
+        "maxSell": 18.84394330,
+        "maxOpenBuy": 50000000.00000000,
+        "maxOpenSell": 50000000.00000000,
+        "suspended": false,
+        "minTrade": 0.1000000000
+    }
+]

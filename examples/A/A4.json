@@ -1,0 +1,8 @@
+{
+    "minBuy": 1.00,
+    "maxBuy": 102.67,
+    "minSell": 1.00,
+    "maxSell": 249.14,
+    "sellThreshold": 236.68,
+    "maxSellQuantity": 102.06493580
+}
