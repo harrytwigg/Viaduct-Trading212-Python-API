@@ -1,1 +1,1 @@
-from viaduct.setup.installer import *
+from setup import installer
