@@ -14,7 +14,7 @@ import logging
 import json
 import requests
 
-from viaduct.setup import *
+from viaduct.setup.installer import *
 from viaduct.utils import *
 from viaduct.public import *
 
