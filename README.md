@@ -35,15 +35,15 @@ Remember to disable 2-factor authentification and store passwords securely!
 
 See below for currently implemented API class methods, these are explained further below
 
-| Method | ISA | Equity | CFD |
-| --- | --- | --- | --- |
-| 1 | X |  |  |
-| 2 | X |  |  |
-| 3 | X |  |  |
-| 4 | X |  |  |
-| 5 | X |  |  |
-| 6 | X |  |  |
-| 7 | X |  |  |
+| Method | Public | ISA | Equity | CFD |
+| --- | --- | --- | --- | --- |
+| 1 - getInstrument() | X | X |  |  |
+| 2 - getAllInstruments() | X | X |  |  |
+| 3 - getFundamentals() | X | X |  |  |
+| 4 - getMinMax() |  | X |  |  |
+| 5 - getSettings() |  | X |  |  |
+| 6 - getChartData() | X | X |  |  |
+| 7 - getPortfolioPerformance() |  | X |  |  |
 
 ## Public Mode
 
