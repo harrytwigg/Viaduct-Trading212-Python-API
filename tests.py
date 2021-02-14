@@ -1,8 +1,6 @@
-from viaduct.isa import *
-from viaduct.public import *
+from viaduct import ISA
+from viaduct import Public
 from viaduct.utils import *
-
-from matplotlib import pyplot as plt
 
 test = ISA("email", "pass", Reality.Real,
            browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")

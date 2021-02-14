@@ -1,1 +1,1 @@
-from setup import installer
+from viaduct.setup.installer import installDriver
