@@ -1,2 +1,2 @@
-from viaduct.isa import installer
+from viaduct.isa import ISA
 from viaduct.public import Public
