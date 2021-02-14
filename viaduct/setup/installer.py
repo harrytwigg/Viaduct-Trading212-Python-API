@@ -3,7 +3,7 @@
 import os
 import logging
 
-from . import utils
+from viaduct.setup.utils import *
 
 
 def installDriver(cwd=False):
