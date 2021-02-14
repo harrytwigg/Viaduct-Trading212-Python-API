@@ -14,9 +14,9 @@ import logging
 import json
 import requests
 
-from .setup import installer
-from .utils import *
-from .public import *
+from viaduct.setup import installer
+from viaduct.utils import *
+from viaduct.public import *
 
 
 class CoreModule(Public):

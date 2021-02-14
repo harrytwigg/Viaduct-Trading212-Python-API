@@ -6,7 +6,7 @@ Standard REST request handler that doesn't need any account specific details or 
 
 import logging
 
-from .utils import *
+from viaduct.utils import *
 
 
 class Public:
