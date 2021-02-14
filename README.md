@@ -4,18 +4,20 @@
 
 # Viaduct | A Trading212 Python REST API
 
-Viaduct is a Python REST API that utilises Trading212's REST API that normally communciates exclusively with first party apps. Selenium is used to scrape required cookies and customer data from the web app but is no longer required after this point. REST network calls are used enabling greater functionallity and speed than pure web scraping.
+Viaduct is a Python REST API wrapper that utilises Trading212's REST API that normally communciates exclusively with first party apps. This has not been offically released publicly but can be reverse engineered.
 
-## Installation and Setup
+Selenium is used to scrape required cookies and customer data from the web app but is no longer required after this point. REST network calls are used enabling greater functionallity and speed than pure web scraping.
 
-### Prerequisites
+The use of a wrapper ensures any API changes in the future will not impact pre-existing Trading212 dependeant programs as the wrapper itself can be updated instead of the underlying code.
+
+## Prerequisites
 
 - Firefox if not in default location, an error will be returned upon runtime.
 - The Selenium Gecko driver will automatically install if not in system path, no manual installation is requried!
 
 Pip install coming soon!
 
-### Import and Usage
+## Import and Usage
 
 If Firefox is not installed in default folder, make sure you pass it upon initialisation for example:
 
@@ -23,22 +25,69 @@ If Firefox is not installed in default folder, make sure you pass it upon initia
 instance = viaduct.ISA(email, password, Reality.Real, browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")
 ```
 
-Currently only ISA Mode is supported, more are coming soon
-Responses are returned python dictionaries, see the root tree images for more information
+Currently only ISA  and public modes are supported, more are coming soon. Responses are returned python dictionaries, see the root tree images for more information. Selenium web scrapping modes extend the public class so it does not need to be recreated.
 
-### ISA Mode
+Examples are the payloads that the Rest API returns, these are returned as Python dictionaries for your convenience
 
-### A1) getInstrument() - Get Specific Instrument Details Not All of Them
+Remember to disable 2-factor authentification and store passwords securely!
+
+## Usage Key
+
+See below for currently implemented API class methods, these are explained further below
+
+| Method | ISA | Equity | CFD |
+| --- | --- | --- | --- |
+| 1 | X |  |  |
+| 2 | X |  |  |
+| 3 | X |  |  |
+| 4 | X |  |  |
+| 5 | X |  |  |
+| 6 | X |  |  |
+| 7 | X |  |  |
+
+## Public Mode
+
+Retrieve publicly available information on companies and their financial information, utilises Trading212's unpublished private REST API no Selenium or web scrapping is required!
+
+Symbols can be optionally loaded at startup, this will take approxuimately 30 seconds, this is requried for symbol reference conversion.
+
+Symbol reference conversion refers to being able to use an isntruments name short hand, pretty name, code, ISIN (International Securities Identification Number), or ID. These are referred to in the Trading212 API and can be converted to one another through the use of helper functions. Code refers to the ticker identifier, name is a shorthand of the pretty name.
+
+```python
+instance = Public(loadSymbols=False)
+```
+
+## ISA Mode
+
+Selenium powered wrapper for management of an ISA account, real mode only
+
+Browser path may need to be manually specified
+
+```python
+instance = ISA("email", "password", Reality.Real, browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")
+```
+
+## Equity Mode
+
+Coming soon!
+
+## CFD Mode
+
+Coming soon!
+
+## API Class Methods
+
+### 1 - getInstrument() - Get specific instrument details instead of all of them
 
 ```python
 instance.getAllInstruments(code="TSLA")
 ```
 
-Get instrument details using position code from the secret API, note this is not the shorthand name, ISIN or stock ticker. Ideal for updating existing data on a stock of interest
+Get instrument details using position code from the secret API, note this is not the shorthand name, ISIN or stock ticker. Ideal for updating existing data on a stock of interest. This is far faster than loading all instruments so if you know the isntrument code, then use this!
 
-#### Example result [here](examples/A/A1.json)
+#### Example result [here](examples/1.json)
 
-### A2) getAllInstruments() - Get all Securities on Trading212!
+### 2 - getAllInstruments() - Get all securities on Trading212!
 
 ```python
 instance.getAllInstruments()
@@ -48,9 +97,9 @@ This returns all the securities on Trading212 Equity and ISA, be warned it's ove
 
 Result format is the same as a single instrument but returns a list of dictionaries
 
-#### Example result [here](examples/A/A2.json)
+#### Example result [here](examples/2.json)
 
-### A3) getFundamentals() - Get Company Fundamentals
+### 3 - getFundamentals() - Get company fundamentals
 
 ```python
 instance.getFundamentals(isin="US36467W1099")
@@ -58,9 +107,9 @@ instance.getFundamentals(isin="US36467W1099")
 
 Takes an isin, returns a requested companies details
 
-#### Example result [here](examples/A/A3.json)
+#### Example result [here](examples/3.json)
 
-### A4) getMinMax() - Get Min and Max Position Sizes
+### 4 - getMinMax() - Get min and max position sizes
 
 ```python
 instance.getMinMax(code="GYMl_EQ")
@@ -68,9 +117,9 @@ instance.getMinMax(code="GYMl_EQ")
 
 Takes a company code. Gets minBuy, maxBuy, minSell, maxSell values in £, maxSellQuantity is number of shares. Not sure what sellThreshold is. The sell parameters only appear for UK stocks for some reason.
 
-#### Example result [here](examples/A/A4.json)
+#### Example result [here](examples/4.json)
 
-### A5) getSettings() - Get Position Trade Settings
+### 5 - getSettings() - Get position trade settings
 
 ```python
 instance.getSettings(code="BOOHl_EQ")
@@ -78,9 +127,9 @@ instance.getSettings(code="BOOHl_EQ")
 
 Takes instrument code, returns maxBuy and maxSell in shares for the account and max buy and sell that is technically possible on the exchange, also has minTrade and if the instrument is suspended.
 
-#### Example result [here](examples/A/A5.json)
+#### Example result [here](examples/5.json)
 
-### A6) getChartData() - Get Instrument Chart Data
+### 6 - getChartData() - Get instrument chart data
 
 ```python
 instance.getChartData(ticker="TSLA", chartPeriod=ChartPeriod.D1, number=5)
@@ -88,4 +137,14 @@ instance.getChartData(ticker="TSLA", chartPeriod=ChartPeriod.D1, number=5)
 
 Takes an instrument ticker, called 'name' when getInstrument() is called, returns a dictionary of data that is normally exclusively displayed on price charts. also takes period and number of most recent data points to return
 
-#### Example result [here](examples/A/A6.json)
+#### Example result [here](examples/6.json)
+
+### 7 - getPortfolioPerformance() - Gets the account performance graph data
+
+```python
+instance.getPortfolioPerformance(historyPeriod=HistoryTimeframe.Y1):
+```
+
+This returns the account portfolio performance graph data that is displayed in the top left of the new app, takes a HistoryPeriod enumeration
+
+#### Example result [here](examples/7.json)

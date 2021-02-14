@@ -10,6 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+import logging
 import json
 import requests
 
@@ -20,6 +21,8 @@ from .public import *
 
 class CoreModule(Public):
     def __init__(self, username, password, tradingType, reality, headless, browserPath, timeout):
+        super().__init__()
+
         installer.installDriver()
         options = webdriver.FirefoxOptions()
         options.headless = headless
@@ -82,7 +85,7 @@ class CoreModule(Public):
             force_click(WebDriverWait(self.driver, self.timeout * 2).until(
                 expected_conditions.element_to_be_clickable((By.XPATH, "/html/body/div[6]/div[3]/div[2]"))))
         except:
-            print("Didn't shut the new account view")
+            logging.warn("Didn't shut the new account view")
 
         # Switch to correct TradingType
         try:

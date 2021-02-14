@@ -4,6 +4,8 @@ Standard REST request handler that doesn't need any account specific details or 
 
 """
 
+import logging
+
 from .utils import *
 
 
@@ -24,7 +26,7 @@ class Public:
 
     # Saves all instruments in a dictionary useful for symbol lookup
     def saveAllInstruments(self):
-        print("Loading all instruments, this will take a while...")
+        logging.info("Loading all instruments, this will take a while...")
         self.instruments = self.getAllInstruments()
         # Don't think getting tickers is actually required
         #self.tickerISINs = self.getTickers()
