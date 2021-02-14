@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='viaduct',         # How you named your package folder (MyLib)
     packages=['viaduct'],   # Chose the same as "name"
-    version='0.0.9',      # Start with a small number and increase it with every change you make
+    version='0.0.10',      # Start with a small number and increase it with every change you make
     # Chose a license from here: https://help.github.com/articles/licensing-a-repository
     license='gpl-3.0',
     # Give a short description about your library
@@ -14,7 +14,7 @@ setup(
     # Provide either the link to your github or to your website
     url='https://github.com/harrytwigg/Viaduct-Trading212-Python-API',
     # I explain this later on
-    download_url='https://github.com/harrytwigg/Viaduct-Trading212-Python-API/archive/0.0.9.tar.gz',
+    download_url='https://github.com/harrytwigg/Viaduct-Trading212-Python-API/archive/0.0.10.tar.gz',
     keywords=['python', 'api', 'rest', 'api-wrapper', 'viaduct', 'trading212',
               'trading212-api'],   # Keywords that define your package best
     install_requires=[            # I get to this in a second
