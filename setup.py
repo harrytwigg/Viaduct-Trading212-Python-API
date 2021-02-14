@@ -32,7 +32,7 @@ setup(
         # Define that your audience are developers
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
-        'License :: OSI Approved :: GPL-3 License',   # Again, pick a license
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',   # Again, pick a license
         # Specify which pyhton versions that you want to support
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
