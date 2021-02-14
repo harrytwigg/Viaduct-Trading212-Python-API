@@ -1,5 +1,5 @@
-#from viaduct import ISA
-from viaduct import Public
+from viaduct.isa import *
+from viaduct.public import *
 from viaduct.setup import *
 from viaduct.utils import *
 
