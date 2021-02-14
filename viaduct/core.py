@@ -23,7 +23,7 @@ class CoreModule(Public):
     def __init__(self, username, password, tradingType, reality, headless, browserPath, timeout):
         super().__init__()
 
-        installer.installDriver()
+        installDriver()
         options = webdriver.FirefoxOptions()
         options.headless = headless
         options.binary_location = browserPath
