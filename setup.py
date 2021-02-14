@@ -8,6 +8,7 @@ setup(
     license='	gpl-3.0',
     # Give a short description about your library
     description='Viaduct is a Trading212 REST API wrapper for python',
+    long_description="Viaduct is a Python REST API wrapper that utilises Trading212's REST API that normally communciates exclusively with first party apps. This has not been offically released publicly but can be reverse engineered. Selenium is used to scrape required cookies and customer data from the web app but is no longer required after this point. REST network calls are used enabling greater functionallity and speed than pure web scraping. The use of a wrapper ensures any API changes in the future will not impact pre-existing Trading212 dependeant programs as the wrapper itself can be updated instead of the underlying code.",
     author='Harry Twigg',                   # Type in your name
     author_email='harrytwigg111@gmail.com',      # Type in your E-Mail
     # Provide either the link to your github or to your website
@@ -20,10 +21,8 @@ setup(
         'validators',
         'beautifulsoup4',
         'selenium',
-        'logging',
         'matplotlib',
         'selenium',
-        'json',
         'requests',
     ],
     classifiers=[
