@@ -1,7 +1,7 @@
 import json
 
-from viaduct.core import *
-from viaduct.utils import *
+from .core import *
+from .utils import *
 
 
 class ISA(CoreModule):
