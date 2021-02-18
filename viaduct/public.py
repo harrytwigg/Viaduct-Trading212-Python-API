@@ -129,7 +129,7 @@ class Public:
             "candles": [
                 {
                     "ticker": code,
-                    "period": "ONE_DAY",
+                    "period": chartPeriod,
                     "size": size,
                     "includeFake": includeFake
                 }

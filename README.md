@@ -4,7 +4,7 @@
 
 # Viaduct | A Trading212 Python REST API
 
-Viaduct is a Python REST API wrapper that utilises Trading212's REST API that normally communciates exclusively with first party apps. This has not been offically released publicly but can be reverse engineered.
+Viaduct is a Python REST API wrapper that utilises Trading212's REST API that normally communciates exclusively with first party apps. This has not been offically released publicly but can be reverse-engineered.
 
 Selenium is used to scrape required cookies and customer data from the web app but is no longer required after this point. REST network calls are used enabling greater functionallity and speed than pure web scraping.
 
@@ -15,17 +15,17 @@ The use of a wrapper ensures any API changes in the future will not impact pre-e
 - Firefox if not in default location, an error will be returned upon runtime.
 - The Selenium Gecko driver will automatically install if not in system path, no manual installation is requried!
 
-Pip install coming soon!
+## Installation
+
+Pip install out now!
+
+```console
+pip install viaduct
+```
 
 ## Import and Usage
 
-If Firefox is not installed in default folder, make sure you pass it upon initialisation for example:
-
-```python
-instance = viaduct.ISA(email, password, Reality.Real, browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")
-```
-
-Currently only ISA  and public modes are supported, more are coming soon. Responses are returned python dictionaries, see the root tree images for more information. Selenium web scrapping modes extend the public class so it does not need to be recreated.
+Viaduct is an API wrapper. API responses are returned python dictionaries, see the root tree images for more information. Selenium web scrapping modes extend the public class so it does not need to be recreated.
 
 Examples are the payloads that the Rest API returns, these are returned as Python dictionaries for your convenience
 
@@ -37,13 +37,13 @@ See below for currently implemented API class methods, these are explained furth
 
 | Method | Public | ISA | Equity | CFD |
 | --- | --- | --- | --- | --- |
-| 1 - getInstrument() | X | X |  |  |
-| 2 - getAllInstruments() | X | X |  |  |
-| 3 - getFundamentals() | X | X |  |  |
-| 4 - getMinMax() |  | X |  |  |
-| 5 - getSettings() |  | X |  |  |
-| 6 - getChartData() | X | X |  |  |
-| 7 - getPortfolioPerformance() |  | X |  |  |
+| 1 - getInstrument() | X | X | X | X |
+| 2 - getAllInstruments() | X | X | X | X |
+| 3 - getFundamentals() | X | X | X | X |
+| 4 - getMinMax() |  | X | X |  |
+| 5 - getSettings() |  | X | X |  |
+| 6 - getChartData() | X | X | X | X |
+| 7 - getPortfolioPerformance() |  | X | X |  |
 
 ## Public Mode
 
@@ -61,19 +61,33 @@ instance = Public(loadSymbols=False)
 
 Selenium powered wrapper for management of an ISA account, real mode only
 
-Browser path may need to be manually specified
+If Firefox is not installed in default folder, make sure you pass the installed path upon initialisation:
 
 ```python
-instance = ISA("email", "password", Reality.Real, browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")
+instance = ISA("email", "password", browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")
 ```
 
 ## Equity Mode
 
-Coming soon!
+Selenium powered wrapper for management of an Equity account, real or demo modes are supported
+
+If Firefox is not installed in default folder, make sure you pass the installed path upon initialisation:
+
+```python
+instance = Equity("email", "password", reality=Reality.Real, browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")
+```
 
 ## CFD Mode
 
-Coming soon!
+Selenium powered wrapper for management of CFD account, real or demo modes are supported
+
+Custom methods for CFD are not yet supported and only return Public API calls
+
+If Firefox is not installed in default folder, make sure you pass the installed path upon initialisation:
+
+```python
+instance = CFD("email", "password", reality=Reality.Real, browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")
+```
 
 ## API Class Methods
 
