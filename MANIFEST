@@ -3,6 +3,8 @@ setup.cfg
 setup.py
 viaduct\__init__.py
 viaduct\core.py
+viaduct\installer.py
+viaduct\installerUtils.py
 viaduct\isa.py
 viaduct\public.py
 viaduct\utils.py

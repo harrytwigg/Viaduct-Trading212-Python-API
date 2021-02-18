@@ -11,10 +11,8 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 import logging
-import json
-import requests
 
-from viaduct.setup import *
+from viaduct.installer import *
 from viaduct.utils import *
 from viaduct.public import *
 
@@ -51,12 +49,11 @@ class CoreModule(Public):
         # Get account data
         # self.accountData = self.get("https://live.trading212.com/frontend-data/customers/entries")
         # self.initInfo = self.get("https://live.trading212.com/rest/v3/init-info")
-        
+
         self.getCorrectView()
 
         # Get the cookies again for the new view
         self.cookiePayload = self.getCookies()
-        
 
     # Gets the current cookies
     def getCookies(self):
@@ -109,8 +106,8 @@ class CoreModule(Public):
             force_click(WebDriverWait(self.driver, self.timeout * 2).until(
                 expected_conditions.element_to_be_clickable((By.XPATH, "/html/body/div[4]/div[5]"))))
             if (self.tradingType == TradingType.ISA):
-                 force_click(WebDriverWait(self.driver, self.timeout * 2).until(
-                expected_conditions.element_to_be_clickable((By.XPATH, '//*[@id="isaSwitchButton"]'))))
+                force_click(WebDriverWait(self.driver, self.timeout * 2).until(
+                    expected_conditions.element_to_be_clickable((By.XPATH, '//*[@id="isaSwitchButton"]'))))
             elif (self.tradingType == TradingType.Equity):
                 force_click(WebDriverWait(self.driver, self.timeout * 2).until(
                     expected_conditions.element_to_be_clickable((By.XPATH, '//*[@id="equitySwitchButton"]'))))
