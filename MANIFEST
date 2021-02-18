@@ -2,7 +2,9 @@
 setup.cfg
 setup.py
 viaduct\__init__.py
+viaduct\cfd.py
 viaduct\core.py
+viaduct\equity.py
 viaduct\installer.py
 viaduct\installerUtils.py
 viaduct\isa.py

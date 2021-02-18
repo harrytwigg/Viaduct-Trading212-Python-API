@@ -3,7 +3,7 @@ from viaduct.utils import *
 
 
 class CFD(CoreModule):
-    def __init__(self, email, password, reality, browserPath, headless=False, timeout=2):
+    def __init__(self, email, password, reality, browserPath, headless=False, timeout=2, loadSymbols=False):
         super().__init__(email, password, TradingType.CFD,
                          reality, headless, browserPath, timeout)
         self.reality = reality

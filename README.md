@@ -25,7 +25,7 @@ pip install viaduct
 
 ## Import and Usage
 
-Viaduct is an API wrapper. API responses are returned python dictionaries, see the root tree images for more information. Selenium web scrapping modes extend the public class so it does not need to be recreated.
+Viaduct is an API wrapper. API responses are returned python dictionaries, see the root tree images for more information. Selenium web scrapping modes extend the public class methods so it does not need to be recreated.
 
 Examples are the payloads that the Rest API returns, these are returned as Python dictionaries for your convenience
 
@@ -64,7 +64,7 @@ Selenium powered wrapper for management of an ISA account, real mode only
 If Firefox is not installed in default folder, make sure you pass the installed path upon initialisation:
 
 ```python
-instance = ISA("email", "password", browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")
+instance = ISA("email", "password", browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe", loadSymbols=False)
 ```
 
 ## Equity Mode
@@ -74,7 +74,7 @@ Selenium powered wrapper for management of an Equity account, real or demo modes
 If Firefox is not installed in default folder, make sure you pass the installed path upon initialisation:
 
 ```python
-instance = Equity("email", "password", reality=Reality.Real, browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")
+instance = Equity("email", "password", reality=Reality.Real, browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe", loadSymbols=False)
 ```
 
 ## CFD Mode
@@ -86,7 +86,7 @@ Custom methods for CFD are not yet supported and only return Public API calls
 If Firefox is not installed in default folder, make sure you pass the installed path upon initialisation:
 
 ```python
-instance = CFD("email", "password", reality=Reality.Real, browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe")
+instance = CFD("email", "password", reality=Reality.Real, browserPath=r"C:\Program Files\Mozilla Firefox\firefox.exe", loadSymbols=False)
 ```
 
 ## API Class Methods

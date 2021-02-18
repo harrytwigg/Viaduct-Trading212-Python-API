@@ -1,19 +1,4 @@
-from viaduct.core import *
-from viaduct.utils import *
-
-
-class Equity(CoreModule):
-    def __init__(self, email, password, reality, browserPath, headless=False, timeout=2, loadSymbols=False):
-        super().__init__(email, password, TradingType.Equity,
-                         reality, headless, browserPath, timeout)
-        self.reality = Reality.Real
-
-        if (loadSymbols):
-            self.saveAllInstruments()
-        else:
-            self.loadedInstruments = False
-
-    # Format url on whether is live
+# Format url on whether is live
     def urlf(self, url):
         if (self.reality == Reality.Real):
             return ("https://live.trading212.com" + url)
