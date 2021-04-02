@@ -1,103 +1,98 @@
-[
-    {
-        "id": 4374,
-        "name": "SIG",
-        "prettyName": "Signature Aviation",
-        "code": "BBA",
-        "type": "STOCK",
-        "currency": "GBP",
-        "group": "UK STOCKS",
-        "isin": "GB00BKDM7X41",
-        "price": {
-            "buy": 4.084,
-            "sell": 4.169
+{
+    "items": [
+        {
+            "ticker": "1COVd_EQ",
+            "type": "STOCK",
+            "isin": "DE0006062144",
+            "currency": "EUR",
+            "shortName": "1COV",
+            "fullName": "Covestro",
+            "description": "Covestro AG",
+            "countryOfOrigin": "DE",
+            "minTrade": 0.0100000000,
+            "digitsPrecision": 2,
+            "quantityPrecision": 8,
+            "exchangeId": 54
         },
-        "realPrice": {
-            "buy": 4.084,
-            "sell": 4.169
+        {
+            "ticker": "1GISl_EQ",
+            "type": "ETF",
+            "isin": "IE00BF4TW560",
+            "currency": "GBX",
+            "shortName": "1GIS",
+            "fullName": "WisdomTree Gilts 10Y -1x",
+            "description": "WisdomTree Gilts 10Y 1x Daily Short",
+            "countryOfOrigin": "GB",
+            "minTrade": 1.0000000000,
+            "digitsPrecision": 2,
+            "exchangeId": 70
         },
-        "minTrade": 1.0000000000,
-        "precision": 3,
-        "minTradeSizeCoefficient": 10,
-        "insignificantDigits": 0,
-        "description": "Signature Aviation PLC",
-        "enabled": true,
-        "suspended": false,
-        "marketId": 35,
-        "shortPercent": 0,
-        "baseCode": "BBA",
-        "maxPendingDist": 1.38400,
-        "priorityIndex": 50.00,
-        "margin": 0.0500,
-        "quantity": 5.0000000000,
-        "quantityPrecision": 0,
-        "countryOfOrigin": "GB"
-    },
-    {
-        "id": 116954,
-        "name": "SIGT",
-        "prettyName": "Seneca Global Income & Growth Trust",
-        "code": "SIGTl_EQ",
-        "type": "STOCK",
-        "currency": "GBX",
-        "group": "XLON",
-        "isin": "GB0008769993",
-        "price": {
-            "buy": 166.62,
-            "sell": 171.38
+        {
+            "ticker": "1MCSl_EQ",
+            "type": "ETF",
+            "isin": "IE00BBGBF313",
+            "currency": "GBX",
+            "shortName": "1MCS",
+            "fullName": "WisdomTree FTSE 250 1x Daily Short",
+            "description": "WisdomTree FTSE 250 1x Daily Short",
+            "countryOfOrigin": "GB",
+            "minTrade": 1.0000000000,
+            "digitsPrecision": 2,
+            "exchangeId": 70
         },
-        "realPrice": {
-            "buy": 166.62,
-            "sell": 171.38
+        {
+            "ticker": "1PASl_EQ",
+            "type": "ETF",
+            "isin": "IE00B94QLR02",
+            "currency": "USD",
+            "shortName": "1PAS",
+            "fullName": "WisdomTree Palladium -1x",
+            "description": "WisdomTree Palladium 1x Daily Short",
+            "countryOfOrigin": "US",
+            "minTrade": 1.0000000000,
+            "digitsPrecision": 2,
+            "exchangeId": 70
         },
-        "minTrade": 1.0000000000,
-        "precision": 2,
-        "minTradeSizeCoefficient": 0,
-        "insignificantDigits": 0,
-        "description": "Seneca Global Income & Growth Trust PLC",
-        "enabled": true,
-        "suspended": false,
-        "marketId": 55,
-        "shortPercent": 0,
-        "baseCode": "SIGTl_EQ",
-        "maxPendingDist": 216.37500,
-        "margin": 1.0000,
-        "quantity": 0.0000000000,
-        "quantityPrecision": 0,
-        "countryOfOrigin": "GB"
-    },
-    {
-        "id": 86890,
-        "name": "PDYPY",
-        "prettyName": "Flutter Entertainment",
-        "code": "PDYPY_US_EQ",
-        "type": "STOCK",
-        "currency": "USD",
-        "group": "US EQ",
-        "isin": "US3440441026",
-        "price": {
-            "buy": 97.59,
-            "sell": 98.31
+        {
+            "ticker": "1SId_EQ",
+            "type": "STOCK",
+            "isin": "US83304A1060",
+            "currency": "EUR",
+            "shortName": "1SI",
+            "fullName": "Snap",
+            "description": "Snap Inc.",
+            "countryOfOrigin": "US",
+            "minTrade": 0.0500000000,
+            "digitsPrecision": 2,
+            "quantityPrecision": 8,
+            "exchangeId": 54
         },
-        "realPrice": {
-            "buy": 97.59,
-            "sell": 98.31
+        {
+            "ticker": "2AAPl_EQ",
+            "type": "ETF",
+            "isin": "IE00BF03XJ35",
+            "currency": "GBX",
+            "shortName": "2AAP",
+            "fullName": "2x Apple",
+            "description": "Leverage Shares 2x Apple ETP",
+            "countryOfOrigin": "IE",
+            "minTrade": 0.0100000000,
+            "quantityPrecision": 8,
+            "exchangeId": 59
         },
-        "minTrade": 1.0000000000,
-        "precision": 2,
-        "minTradeSizeCoefficient": 0,
-        "insignificantDigits": 0,
-        "description": "Flutter Entertainment PLC",
-        "enabled": true,
-        "suspended": false,
-        "marketId": 85,
-        "shortPercent": 0,
-        "baseCode": "PDYPY_US_EQ",
-        "maxPendingDist": 123.18000,
-        "priorityIndex": 50.00,
-        "margin": 1.0000,
-        "quantity": 0.0000000000,
-        "quantityPrecision": 0,
-        "countryOfOrigin": "US"
-    }
-]
+        {
+            "ticker": "2AMDl_EQ",
+            "type": "ETF",
+            "isin": "IE00BKT6ZG93",
+            "currency": "GBX",
+            "shortName": "2AMD",
+            "fullName": "2x AMD",
+            "description": "Leverage Shares 2x Advanced Micro Devices ETP",
+            "countryOfOrigin": "IE",
+            "minTrade": 0.0100000000,
+            "quantityPrecision": 8,
+            "exchangeId": 59
+        }
+    ],
+    "version": 1033719421
+}

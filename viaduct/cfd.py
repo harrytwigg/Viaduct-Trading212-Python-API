@@ -16,3 +16,18 @@ class CFD(CoreModule):
             return ("https://demo.trading212.com" + url)
         else:
             raise Exception("Invalid reality " + self.reality)
+
+    # Gets chart data for a particular ticker
+    # When getting chart data, the ticker returned is the ticker not what is on the stock exchange!
+    def getChartData(self, ticker, chartPeriod, size, includeFake=False):
+        payload = {
+            "candles": [
+                {
+                    "ticker": ticker,
+                    "period": chartPeriod,
+                    "size": size,
+                    "includeFake": includeFake
+                }
+            ]
+        }
+        return post(url=self.urlf("/charting/v2/batch"), payload=payload)

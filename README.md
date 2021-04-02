@@ -37,9 +37,9 @@ See below for currently implemented API class methods, these are explained furth
 
 | Method | Public | ISA | Equity | CFD |
 | --- | --- | --- | --- | --- |
-| 1 - getInstrument() | X | X | X | X |
-| 2 - getAllInstruments() | X | X | X | X |
-| 3 - getFundamentals() | X | X | X | X |
+| 1 - getInstrument() | X | X | X |  |
+| 2 - getAllInstruments() | X | X | X |  |
+| 3 - getFundamentals() | X | X | X |  |
 | 4 - getMinMax() |  | X | X |  |
 | 5 - getSettings() |  | X | X |  |
 | 6 - getChartData() | X | X | X | X |
@@ -51,7 +51,7 @@ Retrieve publicly available information on companies and their financial informa
 
 Symbols can be optionally loaded at startup, this will take approxuimately 30 seconds, this is requried for symbol reference conversion.
 
-Symbol reference conversion refers to being able to use an isntruments name short hand, pretty name, code, ISIN (International Securities Identification Number), or ID. These are referred to in the Trading212 API and can be converted to one another through the use of helper functions. Code refers to the ticker identifier, name is a shorthand of the pretty name.
+Symbol reference conversion refers to being able to use an instruments shortName, longName, ISIN (International Securities Identification Number), or ticker. These are referred to in the Trading212 API and can be converted to one another through the use of helper functions. Code refers to the ticker identifier, name is a shorthand of the pretty name.
 
 ```python
 instance = Public(loadSymbols=False)
@@ -91,15 +91,7 @@ instance = CFD("email", "password", reality=Reality.Real, browserPath=r"C:\Progr
 
 ## API Class Methods
 
-### 1 - getInstrument() - Get specific instrument details instead of all of them
-
-```python
-instance.getAllInstruments(code="TSLA")
-```
-
-Get instrument details using position code from the secret API, note this is not the shorthand name, ISIN or stock ticker. Ideal for updating existing data on a stock of interest. This is far faster than loading all instruments so if you know the isntrument code, then use this!
-
-#### Example result [here](examples/1.json)
+1 - getInstrument() has been removed, use instrument search instead
 
 ### 2 - getAllInstruments() - Get all securities on Trading212!
 
@@ -107,11 +99,9 @@ Get instrument details using position code from the secret API, note this is not
 instance.getAllInstruments()
 ```
 
-This returns all the securities on Trading212 Equity and ISA, be warned it's over 9,000 and constantly growing
+This returns all the securities on Trading212 Equity and ISA, some tickers are also reused by CFD but the lists have been seperated as of 01/04/2021
 
-Result format is the same as a single instrument but returns a list of dictionaries
-
-#### Example result [here](examples/2.json)
+#### Example result [here](examples/2.json) this example has beenn truncated
 
 ### 3 - getFundamentals() - Get company fundamentals
 
@@ -126,20 +116,20 @@ Takes an isin, returns a requested companies details
 ### 4 - getMinMax() - Get min and max position sizes
 
 ```python
-instance.getMinMax(code="GYMl_EQ")
+instance.getMinMax(ticker="GYMl_EQ")
 ```
 
-Takes a company code. Gets minBuy, maxBuy, minSell, maxSell values in £, maxSellQuantity is number of shares. Not sure what sellThreshold is. The sell parameters only appear for UK stocks for some reason.
+Takes a company ticker. Gets minBuy, maxBuy, minSell, maxSell values in £, maxSellQuantity is number of shares. Not sure what sellThreshold is. The sell parameters only appear for UK stocks for some reason.
 
 #### Example result [here](examples/4.json)
 
 ### 5 - getSettings() - Get position trade settings
 
 ```python
-instance.getSettings(code="BOOHl_EQ")
+instance.getSettings(ticker="BOOHl_EQ")
 ```
 
-Takes instrument code, returns maxBuy and maxSell in shares for the account and max buy and sell that is technically possible on the exchange, also has minTrade and if the instrument is suspended.
+Takes instrument ticker, returns maxBuy and maxSell in shares for the account and max buy and sell that is technically possible on the exchange, also has minTrade and if the instrument is suspended.
 
 #### Example result [here](examples/5.json)
 

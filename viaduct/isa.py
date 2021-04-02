@@ -25,13 +25,13 @@ class ISA(CoreModule):
     # Gets min and max buy and sell value in £, max sell quantity is number of shares
     # Not sure what sellThreshold is
     # The sell parameters only appear for UK stocks for some reason
-    def getMinMax(self, code):
-        return get(self.urlf("/rest/v1/equity/value-order/min-max?instrumentCode=" + code), cookies=self.cookiePayload)
+    def getMinMax(self, ticker):
+        return get(self.urlf("/rest/v1/equity/value-order/min-max?instrumentCode=" + ticker), cookies=self.cookiePayload)
 
-    # Takes instrument code, returns maxBuy and maxSell in shares for the account and max buy and sell that is technically
+    # Takes instrument ticker, returns maxBuy and maxSell in shares for the account and max buy and sell that is technically
     # possible on the exchange, also has minTrade and if suspended
-    def getSettings(self, code):
-        return post(self.urlf("/rest/v2/account/instruments/settings"), cookies=self.cookiePayload, payload=[code])
+    def getSettings(self, ticker):
+        return post(self.urlf("/rest/v2/account/instruments/settings"), cookies=self.cookiePayload, payload=[ticker])
 
     # Gets the account performance graph data
     def getPortfolioPerformance(self, historyPeriod):
@@ -39,7 +39,7 @@ class ISA(CoreModule):
 
     # Get all instruments on Trading212!
     def getAllInstruments(self):
-        return get(self.urlf("/rest/v2/instruments/"))
+        return get(self.urlf("rest/instruments/EQUITY/1"))
 
     # Gets company ISINs and tickers for graphs etc
     def getTickers(self):
@@ -64,92 +64,78 @@ class ISA(CoreModule):
             except:
                 pass
 
-    # Gets a symbols name
-    def getName(self, isin="", prettyName="", code="", id=""):
+    # Gets a symbols shortName
+    def getShortName(self, isin="", fullName="", ticker="", id=""):
         if (isin != ""):
-            return self.instrumentSearch("isin", isin, "name")
-        if (prettyName != ""):
-            return self.instrumentSearch("prettyName", prettyName, "name")
-        if (code != ""):
-            return self.instrumentSearch("code", code, "name")
+            return self.instrumentSearch("isin", isin, "shortName")
+        if (fullName != ""):
+            return self.instrumentSearch("fullName", fullName, "shortName")
+        if (ticker != ""):
+            return self.instrumentSearch("ticker", ticker, "shortName")
         if (id != ""):
-            return self.instrumentSearch("id", id, "name")
+            return self.instrumentSearch("id", id, "shortName")
         else:
             raise Exception(
-                "ISIN, prettyName, code, or id is required to find name")
+                "ISIN, fullName, ticker, or id is required to find shortName")
 
-    # Gets a symbols prettyName
-    def getPrettyName(self, isin="", name="", code="", id=""):
+    # Gets a symbols fullName
+    def getFullName(self, isin="", shortName="", ticker="", id=""):
         if (isin != ""):
-            return self.instrumentSearch("isin", isin, "prettyName")
-        if (name != ""):
-            return self.instrumentSearch("name", name, "prettyName")
-        if (code != ""):
-            return self.instrumentSearch("code", code, "prettyName")
+            return self.instrumentSearch("isin", isin, "fullName")
+        if (shortName != ""):
+            return self.instrumentSearch("shortName", shortName, "fullName")
+        if (ticker != ""):
+            return self.instrumentSearch("ticker", ticker, "fullName")
         if (id != ""):
-            return self.instrumentSearch("id", id, "prettyName")
+            return self.instrumentSearch("id", id, "fullName")
         else:
             raise Exception(
-                "ISIN, name, code, or id is required to find prettyName")
+                "ISIN, shortName, ticker, or id is required to find fullName")
 
-    # Gets a symbols code
-    def getCode(self, isin="", name="", prettyName="", id=""):
+    # Gets a symbols ticker
+    def getTicker(self, isin="", shortName="", fullName="", id=""):
         if (isin != ""):
-            return self.instrumentSearch("isin", isin, "code")
-        if (name != ""):
-            return self.instrumentSearch("name", name, "code")
-        if (prettyName != ""):
-            return self.instrumentSearch("prettyName", prettyName, "code")
+            return self.instrumentSearch("isin", isin, "ticker")
+        if (shortName != ""):
+            return self.instrumentSearch("shortName", shortName, "ticker")
+        if (fullName != ""):
+            return self.instrumentSearch("fullName", fullName, "ticker")
         if (id != ""):
-            return self.instrumentSearch("id", id, "code")
+            return self.instrumentSearch("id", id, "ticker")
         else:
             raise Exception(
-                "ISIN, name, prettyName, or id is required to find code")
+                "ISIN, shortName, fullName, or id is required to find ticker")
 
     # Gets a symbols ISIN
-    def getISIN(self, name="", prettyName="", code="", id=""):
-        if (name != ""):
-            return self.instrumentSearch("name", name, "isin")
-        if (prettyName != ""):
-            return self.instrumentSearch("prettyName", prettyName, "isin")
-        if (code != ""):
-            return self.instrumentSearch("code", code, "isin")
+    def getISIN(self, shortName="", fullName="", ticker="", id=""):
+        if (shortName != ""):
+            return self.instrumentSearch("shortName", shortName, "isin")
+        if (fullName != ""):
+            return self.instrumentSearch("fullName", fullName, "isin")
+        if (ticker != ""):
+            return self.instrumentSearch("ticker", ticker, "isin")
         if (id != ""):
             return self.instrumentSearch("id", id, "isin")
         else:
             raise Exception(
-                "Name, prettyName, code, or id is required to find ISIN")
+                "shortName, fullName, ticker, or id is required to find ISIN")
 
-    # Gets a symbols ID
-    def getID(self, isin="", name="", prettyName="", code=""):
-        if (isin != ""):
-            return self.instrumentSearch("isin", isin, "id")
-        if (name != ""):
-            return self.instrumentSearch("name", name, "id")
-        if (prettyName != ""):
-            return self.instrumentSearch("prettyName", prettyName, "id")
-        if (code != ""):
-            return self.instrumentSearch("code", code, "id")
-        else:
-            raise Exception(
-                "ISIN, name, prettyName, or code is required to find id")
-
-    # Get instrument details position code from the secret API
-    def getInstrument(self, code):
-        return get(self.urlf("/rest/v2/instruments/" + code))
+    # Get instrument details position ticker from the secret API
+    def getInstrument(self, ticker):
+        return get(self.urlf("/rest/v2/instruments/" + ticker))
 
     # Get instrument details by ISIN
     # If language is not available, Trading212 seems to return English
-    def getFundamentals(self, isin, langCode="en"):
-        return get(self.urlf("/rest/companies/fundamentals?languageCode=" + langCode + "&isin=" + isin))
+    def getFundamentals(self, isin, langticker="en"):
+        return get(self.urlf("/rest/companies/fundamentals?languageticker=" + langticker + "&isin=" + isin))
 
     # Gets chart data for a particular ticker
-    # When getting chart data, the ticker returned is the code not what is on the stock exchange!
-    def getChartData(self, code, chartPeriod, size, includeFake=False):
+    # When getting chart data, the ticker returned is the ticker not what is on the stock exchange!
+    def getChartData(self, ticker, chartPeriod, size, includeFake=False):
         payload = {
             "candles": [
                 {
-                    "ticker": code,
+                    "ticker": ticker,
                     "period": chartPeriod,
                     "size": size,
                     "includeFake": includeFake
