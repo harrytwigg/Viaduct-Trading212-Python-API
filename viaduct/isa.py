@@ -39,7 +39,7 @@ class ISA(CoreModule):
 
     # Get all instruments on Trading212!
     def getAllInstruments(self):
-        return get(self.urlf("rest/instruments/EQUITY/1"))
+        return get(self.urlf("/rest/instruments/EQUITY/1"))
 
     # Gets company ISINs and tickers for graphs etc
     def getTickers(self):
